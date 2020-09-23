@@ -38,7 +38,7 @@ const MatchStepUp = (props) => {
     buzzcricApi({
       type: 'setupMatch',
       data: {
-        matchDetails: { opted, overs, toss },
+        matchDetails: { opted, overs: +overs, toss },
         visitorTeam: getTeams(visitorTeam),
         hostingTeam: getTeams(hostingTeam),
       },

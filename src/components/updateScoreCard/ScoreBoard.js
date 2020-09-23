@@ -2,8 +2,16 @@ import React, { useContext } from 'react';
 import UpdateScoreContext from '../../context/UpdateScoreContext';
 
 export default () => {
-  const { inPlay } = useContext(UpdateScoreContext);
-  const { target, team, inning, score, wickets, overs } = inPlay.scoreBoard;
+  const { scoreCard } = useContext(UpdateScoreContext);
+  const {
+    team,
+    inning,
+    score,
+    wickets,
+    balls,
+    target,
+    tossWon,
+  } = scoreCard.scoreBoard;
   return (
     <div className="scoreBoard">
       <div>
@@ -15,13 +23,13 @@ export default () => {
             {score}-{wickets}
           </div>
           <div>
-            ({Math.ceil(overs / 6)}.{overs % 6})
+            ({Math.floor(balls / 6)}.{balls % 6})
           </div>
         </div>
       </div>
       <div>
         <div>CR</div>
-        <div>{((score / overs || 0) * 6).toFixed(2)}</div>
+        <div>{((score / balls || 0) * 6).toFixed(2)}</div>
       </div>
     </div>
   );

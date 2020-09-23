@@ -10,26 +10,26 @@ import UpdatingBox from './UpdatingBox';
 
 const UpdateScore = (props) => {
   const { id } = useParams();
-  const [inPlay, setInPlay] = useState(null);
+  const [scoreCard, setScoreCard] = useState(null);
 
   const updateInPP = (inPlay) => {
-    buzzcricApi({ type: 'updateInPP', id, data: inPlay }).then(setInPlay);
+    buzzcricApi({ type: 'updateInPP', id, data: inPlay }).then(setScoreCard);
   };
 
   const updateScores = (ball) => {
-    buzzcricApi({ type: 'updateScore', id, data: { ball } }).then(setInPlay);
+    buzzcricApi({ type: 'updateScore', id, data: { ball } }).then(setScoreCard);
   };
 
   useEffect(() => {
-    buzzcricApi({ type: 'getInPlay', id }).then(setInPlay);
+    buzzcricApi({ type: 'getInPlay', id }).then(setScoreCard);
   }, [id]);
 
-  if (inPlay === null) return <p>Loading...</p>;
+  if (scoreCard === null) return <p>Loading...</p>;
   return (
     <div>
       <Menubar />
       <UpdateScoreContext.Provider
-        value={{ inPlay, id, updateInPP, updateScores }}
+        value={{ scoreCard, id, updateInPP, updateScores }}
       >
         <div>
           <ScoreBoard />

@@ -88,8 +88,8 @@ const SelectingNextPlayer = ({ displayName, players, selectPlayer }) => {
 };
 
 const SelectingNextPlayers = () => {
-  const { id, updateInPP, inPlay } = useContext(UpdateScoreContext);
-  const { batsman, opponentBatsman, bowler } = inPlay;
+  const { id, updateInPP, scoreCard } = useContext(UpdateScoreContext);
+  const { batsman, opponentBatsman, bowler } = scoreCard.inPlay;
 
   const [players, setPlayers] = useState(null);
   const [selectedPlayers, selectPlayers] = useState({
@@ -148,7 +148,7 @@ const SelectingNextPlayers = () => {
 const UpdatingBox = () => {
   const { batsman, opponentBatsman, bowler } = useContext(
     UpdateScoreContext
-  ).inPlay;
+  ).scoreCard.inPlay;
 
   if (batsman && opponentBatsman && bowler) return <UpdateScores />;
   return <SelectingNextPlayers />;

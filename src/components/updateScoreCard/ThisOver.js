@@ -3,8 +3,8 @@ import UpdateScoreContext from '../../context/UpdateScoreContext';
 import { getBallClass } from './utilities';
 
 const ThisOver = () => {
-  const { inPlay } = useContext(UpdateScoreContext);
-  const balls = inPlay.currentOver.map((runs, index) => (
+  const { currentOver } = useContext(UpdateScoreContext).scoreCard;
+  const balls = currentOver.map((runs, index) => (
     <div className={getBallClass(runs)} key={index}>
       {runs}
     </div>

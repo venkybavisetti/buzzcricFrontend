@@ -36,7 +36,6 @@ const RadioButton = ({ displayName, value, name, checked }) => {
 
 const TossWonBy = () => {
   const { hostingTeam, visitorTeam, setToss, toss } = useContext(SetupContext);
-  console.log(toss);
   return (
     <div>
       <div>Toss won by ?</div>

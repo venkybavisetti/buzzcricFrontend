@@ -11,7 +11,6 @@ const getReq = (url) => {
 };
 
 const buzzcricApi = (action) => {
-  console.log(action);
   switch (action.type) {
     case 'setupMatch':
       return postReq('/api/setupMatch', action.data);

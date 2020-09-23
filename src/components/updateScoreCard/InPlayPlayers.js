@@ -29,8 +29,9 @@ const Batsman = ({ batsman, isInStrick }) => {
 };
 
 const InPlayBatsman = () => {
-  const { inPlay } = useContext(UpdateScoreContext);
-  const { batsman, opponentBatsman } = inPlay;
+  const { batsman, opponentBatsman } = useContext(
+    UpdateScoreContext
+  ).scoreCard.inPlay;
 
   const strick = batsman && <Batsman batsman={batsman} isInStrick={true} />;
   const nonStrick = opponentBatsman && (
@@ -50,8 +51,7 @@ const InPlayBatsman = () => {
 };
 
 const InPlayBowler = () => {
-  const { inPlay } = useContext(UpdateScoreContext);
-  const { bowler } = inPlay;
+  const { bowler } = useContext(UpdateScoreContext).scoreCard.inPlay;
   return (
     <div>
       <PlayerDetails
@@ -62,7 +62,7 @@ const InPlayBowler = () => {
         <PlayerDetails
           details={[
             bowler.name,
-            `${Math.ceil(bowler.bowling.balls / 6)}.${
+            `${Math.floor(bowler.bowling.balls / 6)}.${
               bowler.bowling.balls % 6
             }`,
             bowler.bowling.score,
