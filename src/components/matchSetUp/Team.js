@@ -1,6 +1,6 @@
 import React from 'react';
 import InputBox from './InputBox';
-import TaskList from './PlayersList';
+import PlayerList from './PlayersList';
 import Header from './Header';
 import './Team.css';
 
@@ -11,15 +11,15 @@ const generateId = function () {
 };
 
 const SetUpTeam = function ({ setTeam, team, defaultTeam }) {
-  const deleteTasks = function () {
+  const deletePlayers = function () {
     setTeam({ players: [], name: defaultTeam });
   };
 
-  const updateTask = function (text, taskId) {
+  const updatePlayer = function (text, playerId) {
     setTeam((team) => {
       const newTeam = cloneStructure(team);
-      const task = newTeam.players.find((task) => task.id === taskId);
-      task.text = text;
+      const player = newTeam.players.find((player) => player.id === playerId);
+      player.text = text;
       return newTeam;
     });
   };
@@ -32,7 +32,7 @@ const SetUpTeam = function ({ setTeam, team, defaultTeam }) {
     });
   };
 
-  const createTask = function (text) {
+  const createPlayer = function (text) {
     setTeam((team) => {
       const newTeam = cloneStructure(team);
       newTeam.players.push({ text, id: generateId() });
@@ -40,10 +40,10 @@ const SetUpTeam = function ({ setTeam, team, defaultTeam }) {
     });
   };
 
-  const deleteTask = function (taskId) {
+  const deletePlayer = function (playerId) {
     setTeam((team) => {
       let newTeam = cloneStructure(team);
-      let players = newTeam.players.filter((task) => task.id !== taskId);
+      let players = newTeam.players.filter((player) => player.id !== playerId);
       newTeam.players = players;
       return newTeam;
     });
@@ -54,18 +54,18 @@ const SetUpTeam = function ({ setTeam, team, defaultTeam }) {
       <Header
         header={team.name}
         onEnter={updateName}
-        deleteTask={deleteTasks}
+        deletePlayer={deletePlayers}
         className="header"
       />
 
-      <TaskList
-        tasks={team.players}
-        onEnter={updateTask}
-        deleteTask={deleteTask}
-        className="task"
+      <PlayerList
+        players={team.players}
+        onEnter={updatePlayer}
+        deletePlayer={deletePlayer}
+        className="player"
       />
 
-      <InputBox onEnter={createTask} />
+      <InputBox onEnter={createPlayer} />
     </div>
   );
 };

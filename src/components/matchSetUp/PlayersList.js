@@ -1,21 +1,21 @@
 import React from 'react';
 import Header from './Header';
 
-const TaskList = function (props) {
-  const { tasks, onEnter, deleteTask, className } = props;
-  const taskList = tasks.map((task) => {
+const PlayerList = function (props) {
+  const { players, onEnter, deletePlayer, className } = props;
+  const playerList = players.map((player) => {
     return (
       <Header
-        header={task.text}
-        key={task.id}
-        id={task.id}
+        header={player.text}
+        key={player.id}
+        id={player.id}
         onEnter={onEnter}
-        deleteTask={deleteTask}
+        deletePlayer={deletePlayer}
         className={className}
       />
     );
   });
-  return <div>{taskList}</div>;
+  return <div>{playerList}</div>;
 };
 
-export default TaskList;
+export default PlayerList;

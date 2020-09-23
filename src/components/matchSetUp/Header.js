@@ -33,7 +33,7 @@ const Header = (props) => {
     <HeaderWithDeleteBtn
       header={props.header}
       editMode={editMode}
-      deleteTask={props.deleteTask}
+      deletePlayer={props.deletePlayer}
       className={props.className}
       id={props.id}
     />

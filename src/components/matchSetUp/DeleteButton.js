@@ -5,7 +5,7 @@ const AddDeleteBtn = function (Component) {
     return (
       <div className="container">
         <Component {...props} />
-        <div className="deleteBtn" onClick={() => props.deleteTask(props.id)}>
+        <div className="deleteBtn" onClick={() => props.deletePlayer(props.id)}>
           X
         </div>
       </div>
