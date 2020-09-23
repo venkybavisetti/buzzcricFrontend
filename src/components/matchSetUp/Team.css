@@ -1,0 +1,54 @@
+.TeamBox {
+  border: 1px solid black;
+  width: 40%;
+  padding: 10px;
+  min-height: 40vh;
+}
+
+.displayTodoTask {
+  display: flex;
+  margin: 10px 0px;
+  position: relative;
+}
+
+.inputTag {
+  width: 180px;
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+.text {
+  width: 153px;
+  font-size: 20px;
+  overflow: scroll;
+  cursor: pointer;
+  user-select: none;
+}
+
+.header {
+  font-weight: 800;
+  margin: 20px 0px;
+  font-size: large;
+  cursor: pointer;
+  width: 100%;
+}
+
+.deleteBtn {
+  color: gray;
+  font-weight: 700;
+  margin: auto;
+  cursor: pointer;
+  display: none;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.container:hover .deleteBtn {
+  display: block;
+}
+.task {
+  width: 100%;
+}
