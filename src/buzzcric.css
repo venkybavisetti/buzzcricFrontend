@@ -11,6 +11,8 @@ body {
 
 .homePage {
   height: 80vh;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .separationBwtMenuBody {
@@ -222,4 +224,32 @@ body {
   margin: auto;
   border-radius: 20px;
   background: white;
+}
+
+.teamScoreCard {
+  display: flex;
+  text-align: left;
+}
+
+.teamName {
+  height: 16px;
+  overflow: hidden;
+  width: 60px;
+}
+
+.teamScores {
+  width: 140px;
+}
+.matchBoxStatus {
+  color: blue;
+}
+
+.matchBoxLink {
+  color: black;
+  text-decoration: none;
+  padding: 0px 11px;
+  margin-top: 10px;
+  border: 1px solid black;
+  width: 200px;
+  height: 80px;
 }

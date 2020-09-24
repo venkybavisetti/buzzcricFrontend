@@ -36,7 +36,9 @@ const UpdateScore = (props) => {
   }, [id]);
 
   if (scoreCard === null) return <p>Loading...</p>;
-  if (scoreCard.isMatchCompleted) return <Redirect to={`/scoreBoard/${id}`} />;
+  if (scoreCard.winner) {
+    return <Redirect to={`/scoreBoard/${id}`} />;
+  }
 
   return (
     <div>

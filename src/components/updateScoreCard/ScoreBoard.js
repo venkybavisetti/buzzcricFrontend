@@ -13,12 +13,12 @@ const TossWonBy = () => {
 };
 
 const TargetToReach = () => {
-  const { balls, target, overs } = useContext(
+  const { balls, target, overs, score } = useContext(
     UpdateScoreContext
   ).scoreCard.scoreBoard;
   return (
     <div>
-      target {target} from {overs * 6 - balls}
+      target {target - score} from {overs * 6 - balls}
     </div>
   );
 };
