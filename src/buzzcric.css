@@ -54,6 +54,17 @@ body {
   width: 300px;
   height: 100px;
   border: 1px solid black;
+}
+.vs {
+  color: green;
+  font-size: xx-large;
+}
+
+.scoreBoardHeader {
+  text-align: center;
+}
+
+.scoreInScoreBoard {
   display: flex;
   justify-content: space-around;
 }
@@ -186,7 +197,10 @@ body {
   align-items: center;
 }
 
-/*-------------------*/
+.matchStatus {
+  color: red;
+  font-size: small;
+}
 
 .popup {
   position: fixed;

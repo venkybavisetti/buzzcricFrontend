@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Redirect, useParams } from 'react-router-dom';
 import Menubar from '../Menubar';
 import { buzzcricApi } from '../../api/buzzcricApi';
 import UpdateScoreContext from '../../context/UpdateScoreContext';
@@ -7,6 +7,17 @@ import ScoreBoard from './ScoreBoard';
 import InPlayPlayers from './InPlayPlayers';
 import ThisOver from './ThisOver';
 import UpdatingBox from './UpdatingBox';
+
+const Header = () => {
+  const { hostingTeam, visitorTeam } = useContext(
+    UpdateScoreContext
+  ).scoreCard.teams;
+  return (
+    <h1 className="scoreBoardHeader">
+      {hostingTeam} <span className="vs">VS</span> {visitorTeam}
+    </h1>
+  );
+};
 
 const UpdateScore = (props) => {
   const { id } = useParams();
@@ -25,6 +36,8 @@ const UpdateScore = (props) => {
   }, [id]);
 
   if (scoreCard === null) return <p>Loading...</p>;
+  if (scoreCard.isMatchCompleted) return <Redirect to={`/scoreBoard/${id}`} />;
+
   return (
     <div>
       <Menubar />
@@ -32,6 +45,7 @@ const UpdateScore = (props) => {
         value={{ scoreCard, id, updateInPP, updateScores }}
       >
         <div>
+          <Header />
           <ScoreBoard />
           <InPlayPlayers />
           <ThisOver />
