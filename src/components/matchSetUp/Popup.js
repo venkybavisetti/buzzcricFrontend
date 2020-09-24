@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import SetupContext from '../../context/SetupContext';
-import './popup.css';
 
 const Header = (props) => {
   const { hostingTeam, visitorTeam } = useContext(SetupContext);

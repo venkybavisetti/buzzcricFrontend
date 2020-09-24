@@ -2,25 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Menubar from '../Menubar';
 import { Link } from 'react-router-dom';
 import { buzzcricApi } from '../../api/buzzcricApi';
-
-const data = [
-  {
-    hostingTeam: { name: 'csk', score: 200, wickets: 4, balls: 20 },
-    visitorTeam: { name: 'mi', score: 45, wickets: 5, balls: 120 },
-    winner: 'mi',
-    tossWon: 'mi',
-    opted: 'bat',
-    id: 2,
-  },
-  {
-    hostingTeam: { name: 'kkr', score: 220, wickets: 5, balls: 60 },
-    visitorTeam: { name: 'mi', score: 450, wickets: 2, balls: 200 },
-    winner: null,
-    tossWon: 'mi',
-    opted: 'bat',
-    id: 1,
-  },
-];
+import MatchStatus from '../MatchScoreBoard/MatchStatus';
 
 const TeamScoreCard = ({ name, score, wickets, balls }) => {
   return (
@@ -33,24 +15,13 @@ const TeamScoreCard = ({ name, score, wickets, balls }) => {
   );
 };
 
-const MatchStatus = ({ winner, tossWon, opted }) => {
-  return (
-    <div className="matchBoxStatus">
-      {winner
-        ? `${winner} won the match`
-        : `toss won by ${tossWon} ${opted} first`}
-    </div>
-  );
-};
-
 const MatchBox = ({ matchDetails }) => {
-  const { hostingTeam, visitorTeam, winner, tossWon, opted } = matchDetails;
   return (
     <Link className="matchBoxLink" to={`/scoreBoard/${matchDetails.id}`}>
       <div className="matchBox">
-        <TeamScoreCard {...hostingTeam} />
-        <TeamScoreCard {...visitorTeam} />
-        <MatchStatus {...{ winner, tossWon, opted }} />
+        <TeamScoreCard {...{ ...matchDetails.hostingTeam }} />
+        <TeamScoreCard {...{ ...matchDetails.visitorTeam }} />
+        <MatchStatus {...{ ...matchDetails, className: 'matchBoxStatus' }} />
       </div>
     </Link>
   );
@@ -68,6 +39,7 @@ const Matches = ({ matches }) => {
 const useTimer = (timeToFetch = 10) => {
   const [matches, setMatches] = useState(null);
   useEffect(() => {
+    buzzcricApi({ type: 'getMatches' }).then(setMatches);
     const interval = setInterval(
       () => buzzcricApi({ type: 'getMatches' }).then(setMatches),
       1000 * timeToFetch
@@ -75,7 +47,7 @@ const useTimer = (timeToFetch = 10) => {
     return () => {
       clearInterval(interval);
     };
-  }, []);
+  }, [timeToFetch]);
 
   return [matches];
 };

@@ -253,3 +253,65 @@ body {
   width: 200px;
   height: 80px;
 }
+
+.match_scoreBoard {
+  min-height: 50vh;
+}
+
+.scoreBoard_header {
+  text-align: center;
+}
+
+.scoreBoardStatusMsg {
+  color: blue;
+  margin-left: 120px;
+  font-size: large;
+}
+
+.scoreBoardHdr {
+  margin: 0px;
+  text-align: center;
+}
+
+.teamScoreHeader {
+  background-color: #4a4a4a;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  padding: 8px 0px;
+  width: 85%;
+  font-weight: bolder;
+  font-size: medium;
+}
+.notBattedPlayer {
+  margin: 0px 8px;
+}
+.notBattedPlayersBox {
+  display: flex;
+  margin: 10px 0px;
+  font-weight: 600;
+}
+
+.notBattedPlayers {
+  color: #1866db;
+  display: flex;
+}
+
+.battingPerformance {
+  width: 35%;
+}
+
+.playersPerformance {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.bowlersPerformance {
+  width: 35%;
+}
+
+.headerToCenter {
+  display: flex;
+  justify-content: center;
+}
