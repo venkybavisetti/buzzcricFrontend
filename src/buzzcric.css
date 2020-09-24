@@ -9,12 +9,6 @@ body {
   margin: 0 auto;
 }
 
-.homePage {
-  height: 80vh;
-  display: flex;
-  flex-wrap: wrap;
-}
-
 .separationBwtMenuBody {
   height: 6px;
   background-color: #e3e6e3;
@@ -228,30 +222,52 @@ body {
 
 .teamScoreCard {
   display: flex;
-  text-align: left;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+  box-sizing: border-box;
+  padding: 0px 11px;
 }
 
 .teamName {
+  text-align: left;
   height: 16px;
   overflow: hidden;
-  width: 60px;
+  width: 180px;
+  font-weight: 600;
+  color: #2b2d2c;
 }
 
 .teamScores {
+  text-align: right;
   width: 140px;
+  font-weight: 700;
 }
 .matchBoxStatus {
   color: blue;
+  background-color: #f1f2f3;
+  margin-top: 3px;
+  box-sizing: border-box;
+  height: 18px;
+  padding: 0px 10px;
+}
+
+.homePage {
+  min-height: 50vh;
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.matchBox {
+  margin: 10px 0px 0px 21px;
+  border: 1px solid #ede8e8;
+  width: 280px;
+  height: 100px;
+  color: black;
+  border-radius: 5px;
 }
 
 .matchBoxLink {
-  color: black;
   text-decoration: none;
-  padding: 0px 11px;
-  margin-top: 10px;
-  border: 1px solid black;
-  width: 200px;
-  height: 80px;
 }
 
 .match_scoreBoard {
@@ -314,4 +330,26 @@ body {
 .headerToCenter {
   display: flex;
   justify-content: center;
+}
+
+.completed {
+  color: #2b2c2d;
+  font-weight: 700;
+  display: flex;
+  margin: 6px 0px 0px 10px;
+}
+
+.live {
+  color: #dd0000;
+  font-weight: 700;
+  display: flex;
+  margin-top: 6px;
+}
+
+.circle {
+  height: 7px;
+  width: 7px;
+  background-color: #dd0000;
+  border-radius: 50%;
+  margin: 6px 5px;
 }

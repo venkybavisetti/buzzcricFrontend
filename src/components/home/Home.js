@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Menubar from '../Menubar';
 import { Link } from 'react-router-dom';
 import { buzzcricApi } from '../../api/buzzcricApi';
-import MatchStatus from '../MatchScoreBoard/MatchStatus';
+import MatchStatusMsg from '../MatchScoreBoard/MatchStatus';
 
 const TeamScoreCard = ({ name, score, wickets, balls }) => {
   return (
@@ -15,13 +15,24 @@ const TeamScoreCard = ({ name, score, wickets, balls }) => {
   );
 };
 
+const MatchStatus = ({ winner }) => {
+  return winner ? (
+    <div className="live">
+      <div className="circle"> </div>Live
+    </div>
+  ) : (
+    <div className="completed">completed</div>
+  );
+};
+
 const MatchBox = ({ matchDetails }) => {
   return (
     <Link className="matchBoxLink" to={`/scoreBoard/${matchDetails.id}`}>
       <div className="matchBox">
+        <MatchStatus winner={matchDetails.winner} />
         <TeamScoreCard {...{ ...matchDetails.hostingTeam }} />
         <TeamScoreCard {...{ ...matchDetails.visitorTeam }} />
-        <MatchStatus {...{ ...matchDetails, className: 'matchBoxStatus' }} />
+        <MatchStatusMsg {...{ ...matchDetails, className: 'matchBoxStatus' }} />
       </div>
     </Link>
   );
