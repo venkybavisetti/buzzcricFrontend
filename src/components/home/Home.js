@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Menubar from '../Menubar';
 import { Link } from 'react-router-dom';
 import { buzzcricApi } from '../../api/buzzcricApi';
-import MatchStatusMsg from '../MatchScoreBoard/MatchStatus';
+import { MatchStatusMsg, MatchStatus } from '../MatchScoreBoard/MatchStatus';
 
 const TeamScoreCard = ({ name, score, wickets, balls }) => {
   return (
@@ -12,16 +12,6 @@ const TeamScoreCard = ({ name, score, wickets, balls }) => {
         {score}-{wickets} ({Math.floor(balls / 6)}.{balls % 6})
       </div>
     </div>
-  );
-};
-
-const MatchStatus = ({ winner }) => {
-  return winner ? (
-    <div className="live">
-      <div className="circle"> </div>Live
-    </div>
-  ) : (
-    <div className="completed">completed</div>
   );
 };
 

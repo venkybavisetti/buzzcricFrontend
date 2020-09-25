@@ -1,16 +1,18 @@
 import React, { useContext } from 'react';
-import MatchStatus from './MatchStatus';
 import ScoreBoardContext from '../../context/ScoreBoardContext';
+import { MatchStatusMsg, MatchStatus } from './MatchStatus';
 
 const MatchHeaders = () => {
   const props = useContext(ScoreBoardContext);
   return (
-    <div>
+    <div className="matchHeader">
+      <MatchStatus winner={props.winner} />
+
       <h1 className="scoreBoardHdr">
         {props.battingTeam.name} <span className="vs">VS</span>
         {props.bowlingTeam.name}
       </h1>
-      <MatchStatus {...{ ...props, className: 'scoreBoardStatusMsg' }} />
+      <MatchStatusMsg {...{ ...props, className: 'scoreBoardStatusMsg' }} />
     </div>
   );
 };

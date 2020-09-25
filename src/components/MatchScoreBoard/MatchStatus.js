@@ -20,7 +20,7 @@ const TargetToReach = ({ balls, target, overs, score, className }) => {
   );
 };
 
-const MatchStatus = (props) => {
+const MatchStatusMsg = (props) => {
   if (props.winner)
     return (
       <WinningStatus
@@ -34,4 +34,14 @@ const MatchStatus = (props) => {
   );
 };
 
-export default MatchStatus;
+const MatchStatus = ({ winner }) => {
+  return winner ? (
+    <div className="completed">completed</div>
+  ) : (
+    <div className="live">
+      <div className="circle"> </div>Live
+    </div>
+  );
+};
+
+export { MatchStatus, MatchStatusMsg };

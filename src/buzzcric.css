@@ -24,7 +24,7 @@ body {
 
 .logo {
   height: 30px;
-  padding: 3px;
+  margin: 5px 0px 0px 40px;
   cursor: pointer;
 }
 
@@ -52,8 +52,9 @@ body {
   border: 1px solid black;
 }
 .vs {
-  color: green;
+  color: blue;
   font-size: xx-large;
+  margin: 0px 10px;
 }
 
 .scoreBoardHeader {
@@ -79,6 +80,20 @@ body {
 .inPlayBatsmanHdr {
   display: flex;
   justify-content: space-around;
+  height: 25px;
+}
+
+.inPlayBatsmanHdr .pos1 {
+  padding-left: 10px;
+}
+.inPlayBatsmanHdr .pos4 {
+  padding-right: 10px;
+}
+.inPlayBatsmanHdr > .pos2,
+.pos3,
+.pos1,
+.pos4 {
+  padding-top: 4px;
 }
 
 .inPlayHdr {
@@ -280,7 +295,7 @@ body {
 
 .scoreBoardStatusMsg {
   color: blue;
-  margin-left: 120px;
+  margin: 0px 0px 10px 72px;
   font-size: large;
 }
 
@@ -352,4 +367,13 @@ body {
   background-color: #dd0000;
   border-radius: 50%;
   margin: 6px 5px;
+}
+.matchHeader .live,
+.matchHeader .completed {
+  padding-left: 70px;
+  font-size: large;
+}
+
+.inPlayHdr {
+  font-weight: 600;
 }
