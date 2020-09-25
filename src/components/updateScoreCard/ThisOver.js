@@ -9,7 +9,11 @@ const ThisOver = () => {
       {runs}
     </div>
   ));
-  return <div className="balls thisOver">{balls}</div>;
+  return (
+    <div className="balls thisOver">
+      <span>This Over :</span> {balls}
+    </div>
+  );
 };
 
 export default ThisOver;

@@ -29,23 +29,21 @@ export default () => {
   ).scoreCard.scoreBoard;
   return (
     <div className="scoreBoard">
-      <div className="scoreInScoreBoard">
-        <div>
-          <div>
-            {team}, {inning} inning
-          </div>
-          <div className="teamScore">
-            <div>
-              {score}-{wickets}
-            </div>
-            <div>
-              ({Math.floor(balls / 6)}.{balls % 6})
-            </div>
-          </div>
+      <div className="teamHd">
+        <div className="placement">
+          {team}, {inning} inning
         </div>
-        <div>
-          <div>CR</div>
-          <div>{((score / balls || 0) * 6).toFixed(2)}</div>
+        <div className="placement">CRR</div>
+      </div>
+      <div className="teamScore">
+        <div className="placement">
+          <span>
+            {score}-{wickets}
+          </span>
+          ({Math.floor(balls / 6)}.{balls % 6})
+        </div>
+        <div className="placement crr">
+          {((score / balls || 0) * 6).toFixed(2)}
         </div>
       </div>
       <div className="matchStatus">

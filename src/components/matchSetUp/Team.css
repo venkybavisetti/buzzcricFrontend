@@ -118,3 +118,7 @@
   cursor: pointer;
   font-size: medium;
 }
+
+.popupContent .extras {
+  display: flex;
+}

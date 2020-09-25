@@ -39,7 +39,7 @@ const InPlayBatsman = () => {
   );
 
   return (
-    <div>
+    <div className="batsman">
       <PlayerDetails
         details={['Batsman', 'R', 'B', 'SR']}
         className="inPlayHdr"

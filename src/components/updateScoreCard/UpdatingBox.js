@@ -21,14 +21,10 @@ const RadioButton = ({ displayName, value, selectedValue }) => {
 const RadioButtons = ({ setExtras, extras }) => {
   return (
     <div className="extras" onChange={(event) => setExtras(event.target.value)}>
-      <div>
-        <RadioButton displayName="Wide" value="wd" selectedValue={extras} />
-        <RadioButton displayName="No Ball" value="nb" selectedValue={extras} />
-      </div>
-      <div>
-        <RadioButton displayName="Leg Byes" value="lb" selectedValue={extras} />
-        <RadioButton displayName="Wicket" value="wk" selectedValue={extras} />
-      </div>
+      <RadioButton displayName="Wide" value="wd" selectedValue={extras} />
+      <RadioButton displayName="No Ball" value="nb" selectedValue={extras} />
+      <RadioButton displayName="Leg Byes" value="lb" selectedValue={extras} />
+      <RadioButton displayName="Wicket" value="wk" selectedValue={extras} />
     </div>
   );
 };
@@ -77,7 +73,7 @@ const SelectingNextPlayer = ({ displayName, players, selectPlayer }) => {
 
   return (
     <div className="selectingPlayer">
-      <div>{displayName} : </div>
+      <div className="playerName">{displayName} : </div>
       <div>
         <select onChange={(event) => selectPlayer(event.target.value)}>
           {children}
@@ -134,13 +130,15 @@ const SelectingNextPlayers = () => {
         )}
         {!bowler && (
           <SelectingNextPlayer
-            displayName="Next Bowler"
+            displayName="Next Bowler "
             players={players.bowler}
             selectPlayer={updateSelectedPlayers.bind(null, 'bowler')}
           />
         )}
       </div>
-      <button onClick={updateInPlay}>click</button>
+      <button className="nextBtn" onClick={updateInPlay}>
+        Next
+      </button>
     </div>
   );
 };

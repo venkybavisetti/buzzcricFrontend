@@ -36,12 +36,10 @@ const UpdateScore = (props) => {
   }, [id]);
 
   if (scoreCard === null) return <p>Loading...</p>;
-  if (scoreCard.winner) {
-    return <Redirect to={`/scoreBoard/${id}`} />;
-  }
+  if (scoreCard.winner) return <Redirect to={`/scoreBoard/${id}`} />;
 
   return (
-    <div>
+    <div className="updatedScoreBoard">
       <Menubar />
       <UpdateScoreContext.Provider
         value={{ scoreCard, id, updateInPP, updateScores }}
