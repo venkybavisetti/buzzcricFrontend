@@ -2,7 +2,6 @@ import React from 'react';
 import InputBox from './InputBox';
 import PlayerList from './PlayersList';
 import Header from './Header';
-import './Team.css';
 
 const cloneStructure = (structure) => JSON.parse(JSON.stringify(structure));
 
@@ -55,7 +54,7 @@ const SetUpTeam = function ({ setTeam, team, defaultTeam }) {
         header={team.name}
         onEnter={updateName}
         deletePlayer={deletePlayers}
-        className="header"
+        className="setupTeamHeader"
       />
 
       <PlayerList

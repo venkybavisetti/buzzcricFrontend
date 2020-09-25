@@ -5,6 +5,7 @@ import { buzzcricApi } from '../../api/buzzcricApi';
 import { useHistory } from 'react-router-dom';
 import Popup from './Popup';
 import SetupContext from '../../context/SetupContext';
+import './Team.css';
 
 const getTeams = (team) => {
   let newTeam = {};

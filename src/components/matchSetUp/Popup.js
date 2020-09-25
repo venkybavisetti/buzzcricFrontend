@@ -4,15 +4,16 @@ import SetupContext from '../../context/SetupContext';
 const Header = (props) => {
   const { hostingTeam, visitorTeam } = useContext(SetupContext);
   return (
-    <div className="header">
-      {hostingTeam} vs {visitorTeam}
-    </div>
+    <h1 className="scoreBoardHdr">
+      {hostingTeam} <span className="vs">VS</span>
+      {visitorTeam}
+    </h1>
   );
 };
 
 const StartBtn = ({ sendResult }) => (
-  <div className="actions">
-    <button onClick={sendResult} className="button">
+  <div className="nextBtnDiv">
+    <button onClick={sendResult} className="nextBtn">
       Start Match
     </button>
   </div>
@@ -36,8 +37,8 @@ const RadioButton = ({ displayName, value, name, checked }) => {
 const TossWonBy = () => {
   const { hostingTeam, visitorTeam, setToss, toss } = useContext(SetupContext);
   return (
-    <div>
-      <div>Toss won by ?</div>
+    <div className="toss">
+      <div className="subHdr"> Toss won by ?</div>
       <div className="extras" onChange={(event) => setToss(event.target.value)}>
         <RadioButton
           displayName={hostingTeam}
@@ -59,8 +60,8 @@ const TossWonBy = () => {
 const OptedTo = () => {
   const { setOptedTo, opted } = useContext(SetupContext);
   return (
-    <div>
-      <div>Opted to ?</div>
+    <div className="opted">
+      <div className="subHdr">Opted to ?</div>
       <div
         className="extras"
         onChange={(event) => setOptedTo(event.target.value)}
@@ -86,8 +87,8 @@ const Overs = () => {
   const { setOvers, overs } = useContext(SetupContext);
 
   return (
-    <div>
-      <div>Overs ?</div>
+    <div className="overs">
+      <div className="subHdr">Overs ?</div>
       <input
         className="inputTag"
         value={overs || ''}
@@ -99,7 +100,7 @@ const Overs = () => {
 
 const PopupContent = () => {
   return (
-    <div>
+    <div className="popupContent">
       <TossWonBy />
       <OptedTo />
       <Overs />
@@ -107,16 +108,22 @@ const PopupContent = () => {
   );
 };
 
+const CloseBtn = ({ closePopup }) => (
+  <div className="closeBtn" onClick={closePopup}>
+    x
+  </div>
+);
+
 const Popup = ({ closePopup }) => {
   const { sendResult } = useContext(SetupContext);
   return (
     <div className="popup">
-      <div className="popup_inner">
+      <div className="popupInner">
         <Header />
         <PopupContent />
         <div>
           <StartBtn sendResult={sendResult} />
-          <button onClick={closePopup}>close me</button>
+          <CloseBtn closePopup={closePopup} />
         </div>
       </div>
     </div>
