@@ -29,6 +29,7 @@ body {
 }
 
 .hostBtn,
+.login,
 .nextBtn {
   background-color: mediumblue;
   color: white;
@@ -38,6 +39,25 @@ body {
   cursor: pointer;
   text-decoration: none;
   padding: 3px;
+}
+
+.menuBtnS {
+  width: 20%;
+  margin: auto 20px;
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.login {
+  font-size: large;
+  padding: 5px 10px;
+}
+
+.imgUrl {
+  width: 40px;
+  height: 40px;
+  border: 1px solid white;
+  border-radius: 50%;
 }
 
 .nextBtnDiv {
@@ -160,6 +180,10 @@ body {
   color: black;
   margin-top: 4px;
   font-weight: 700;
+}
+
+.thisOver {
+  height: 25px;
 }
 
 .updateScores .ball {

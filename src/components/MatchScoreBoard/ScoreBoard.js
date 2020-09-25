@@ -5,6 +5,7 @@ import MatchHeaders from './MatchHeader';
 import TeamScoreBoard from './TeamScoreBoard';
 import { buzzcricApi } from '../../api/buzzcricApi';
 import { useParams } from 'react-router-dom';
+import { useGetUser } from '../getUser';
 
 const MatchScoreBoard = ({ matchDetails }) => {
   const { battingTeam, bowlingTeam, inning, inPlay } = useContext(
@@ -39,10 +40,10 @@ const useTimer = (timeToFetch = 10) => {
 
 const ScoreBoard = (props) => {
   const [match] = useTimer(5);
-
+  const user = useGetUser();
   return (
     <div>
-      <Menubar onHome={true} />
+      <Menubar onHome={true} imgUrl={user.img} />
       <ScoreBoardContext.Provider value={{ ...match }}>
         <MatchScoreBoard matchDetails={match} />
       </ScoreBoardContext.Provider>

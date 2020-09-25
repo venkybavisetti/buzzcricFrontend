@@ -26,6 +26,8 @@ const buzzcricApi = (action) => {
       return getReq('/api/getMatches');
     case 'scoreBoard':
       return getReq(`/api/scoreBoard/${action.id}`);
+    case 'getUser':
+      return getReq('/api/getUser');
 
     default:
       return new Promise((_res, reject) => reject());

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Menubar from '../Menubar';
 import { Link } from 'react-router-dom';
 import { buzzcricApi } from '../../api/buzzcricApi';
 import { MatchStatusMsg, MatchStatus } from '../MatchScoreBoard/MatchStatus';
+import { useGetUser } from '../getUser';
 
 const TeamScoreCard = ({ name, score, wickets, balls }) => {
   return (
@@ -55,10 +56,11 @@ const useTimer = (timeToFetch = 10) => {
 
 const Home = (props) => {
   const [matches] = useTimer(5);
+  const user = useGetUser();
 
   return (
     <div>
-      <Menubar onHome={true} />
+      <Menubar onHome={true} imgUrl={user.img} />
       <Matches matches={matches} />
     </div>
   );

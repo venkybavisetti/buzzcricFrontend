@@ -7,6 +7,7 @@ import ScoreBoard from './ScoreBoard';
 import InPlayPlayers from './InPlayPlayers';
 import ThisOver from './ThisOver';
 import UpdatingBox from './UpdatingBox';
+import { useGetUser } from '../getUser';
 
 const Header = () => {
   const { hostingTeam, visitorTeam } = useContext(
@@ -22,6 +23,7 @@ const Header = () => {
 const UpdateScore = (props) => {
   const { id } = useParams();
   const [scoreCard, setScoreCard] = useState(null);
+  const user = useGetUser();
 
   const updateInPP = (inPlay) => {
     buzzcricApi({ type: 'updateInPP', id, data: inPlay }).then(setScoreCard);
@@ -40,7 +42,7 @@ const UpdateScore = (props) => {
 
   return (
     <div className="updatedScoreBoard">
-      <Menubar />
+      <Menubar imgUrl={user.img} />
       <UpdateScoreContext.Provider
         value={{ scoreCard, id, updateInPP, updateScores }}
       >

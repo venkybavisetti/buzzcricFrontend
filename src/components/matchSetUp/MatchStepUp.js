@@ -5,6 +5,8 @@ import { buzzcricApi } from '../../api/buzzcricApi';
 import { useHistory } from 'react-router-dom';
 import Popup from './Popup';
 import SetupContext from '../../context/SetupContext';
+import { useGetUser } from '../getUser';
+
 import './Team.css';
 
 const getTeams = (team) => {
@@ -18,6 +20,7 @@ const MatchStepUp = (props) => {
   const hostTeamName = 'Hosting Team?';
   const visitorTeamName = 'Visitor Team?';
   let history = useHistory();
+  const user = useGetUser();
 
   const [hostingTeam, setHostingTeam] = useState({
     name: hostTeamName,
@@ -50,7 +53,7 @@ const MatchStepUp = (props) => {
 
   return (
     <div>
-      <Menubar />
+      <Menubar imgUrl={user.img} />
       <div className="matchStepup">
         <div className="setupTeams">
           <SetUpTeam
