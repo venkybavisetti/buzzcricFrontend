@@ -53,6 +53,16 @@ body {
   padding: 5px 10px;
 }
 
+.editScoreBoard {
+  display: flex;
+  justify-content: space-between;
+}
+
+.editOption {
+  border: 1px solid black;
+  margin: 8px 75px 0px 0px;
+}
+
 .imgUrl {
   width: 40px;
   height: 40px;

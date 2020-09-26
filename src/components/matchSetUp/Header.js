@@ -25,7 +25,11 @@ const Header = (props) => {
   if (isEditMode)
     return (
       <div className={props.className}>
-        <InputBox onEnter={updateHeader} inputText={props.header} />
+        <InputBox
+          onEnter={updateHeader}
+          inputText={props.header}
+          placeholder="Team Name"
+        />
       </div>
     );
 
