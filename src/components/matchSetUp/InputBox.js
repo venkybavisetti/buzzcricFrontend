@@ -15,6 +15,7 @@ const InputBox = (props) => {
     <input
       className="inputTag"
       value={text}
+      placeholder="add players"
       onChange={(event) => setText(event.target.value)}
       onKeyDown={handleKeyPress}
     />

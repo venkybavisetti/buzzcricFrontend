@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import ScoreBoardContext from '../../context/ScoreBoardContext';
 import Menubar from '../Menubar';
 import MatchHeaders from './MatchHeader';
 import TeamScoreBoard from './TeamScoreBoard';
-import { buzzcricApi } from '../../api/buzzcricApi';
 import { useParams } from 'react-router-dom';
-import { useGetUser } from '../getUser';
+import { useGetUser } from '../utilities';
+import { buzzcricApi } from '../../api/buzzcricApi';
 
 const MatchScoreBoard = ({ matchDetails }) => {
   const { battingTeam, bowlingTeam, inning, inPlay } = useContext(
@@ -23,6 +23,7 @@ const MatchScoreBoard = ({ matchDetails }) => {
 
 const useTimer = (timeToFetch = 10) => {
   const { id } = useParams();
+
   const [match, setMatch] = useState(null);
   useEffect(() => {
     buzzcricApi({ type: 'scoreBoard', id }).then(setMatch);
@@ -35,11 +36,11 @@ const useTimer = (timeToFetch = 10) => {
     };
   }, [id, timeToFetch]);
 
-  return [match];
+  return match;
 };
 
 const ScoreBoard = (props) => {
-  const [match] = useTimer(5);
+  const match = useTimer(5);
   const user = useGetUser();
   return (
     <div>

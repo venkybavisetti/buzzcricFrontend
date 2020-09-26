@@ -58,6 +58,7 @@ body {
   height: 40px;
   border: 1px solid white;
   border-radius: 50%;
+  cursor: pointer;
 }
 
 .nextBtnDiv {

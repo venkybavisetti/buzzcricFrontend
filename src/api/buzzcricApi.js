@@ -1,13 +1,31 @@
 const postReq = (url, data) => {
-  return fetch(url, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data),
-  }).then((data) => data.json());
+  return new Promise((resolve, reject) => {
+    fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    }).then((data) => {
+      const response = data.json();
+      if (data.status === 403) {
+        reject(response);
+        return;
+      }
+      resolve(response);
+    });
+  });
 };
 
 const getReq = (url) => {
-  return fetch(url).then((res) => res.json());
+  return new Promise((resolve, reject) => {
+    return fetch(url).then((data) => {
+      const response = data.json();
+      if (data.status === 403) {
+        reject(response);
+        return;
+      }
+      resolve(response);
+    });
+  });
 };
 
 const buzzcricApi = (action) => {
@@ -18,6 +36,8 @@ const buzzcricApi = (action) => {
       return postReq(`/api/updateInPP/${action.id}`, action.data);
     case 'updateScore':
       return postReq(`/api/updateScore/${action.id}`, action.data);
+    case 'logout':
+      return postReq('/api/logout');
     case 'getInPlay':
       return getReq(`/api/getInPlay/${action.id}`);
     case 'choosePlayers':

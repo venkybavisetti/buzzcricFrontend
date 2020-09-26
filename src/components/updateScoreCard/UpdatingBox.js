@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import UpdateScoreContext from '../../context/UpdateScoreContext';
 import { getBallClass } from './utilities';
 import { buzzcricApi } from '../../api/buzzcricApi';
+import { useHistory } from 'react-router-dom';
 
 const RadioButton = ({ displayName, value, selectedValue }) => {
   return (
@@ -86,6 +87,7 @@ const SelectingNextPlayer = ({ displayName, players, selectPlayer }) => {
 const SelectingNextPlayers = () => {
   const { id, updateInPP, scoreCard } = useContext(UpdateScoreContext);
   const { batsman, opponentBatsman, bowler } = scoreCard.inPlay;
+  const history = useHistory();
 
   const [players, setPlayers] = useState(null);
   const [selectedPlayers, selectPlayers] = useState({
@@ -106,7 +108,9 @@ const SelectingNextPlayers = () => {
   };
 
   useEffect(() => {
-    buzzcricApi({ type: 'choosePlayers', id }).then(setPlayers);
+    buzzcricApi({ type: 'choosePlayers', id })
+      .then(setPlayers)
+      .catch((err) => history.push('/'));
   }, [id]);
 
   if (players === null) return <p>Loading...</p>;

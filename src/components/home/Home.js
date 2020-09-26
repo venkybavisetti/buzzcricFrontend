@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Menubar from '../Menubar';
 import { Link } from 'react-router-dom';
 import { buzzcricApi } from '../../api/buzzcricApi';
 import { MatchStatusMsg, MatchStatus } from '../MatchScoreBoard/MatchStatus';
-import { useGetUser } from '../getUser';
+import { useGetUser } from '../utilities';
 
 const TeamScoreCard = ({ name, score, wickets, balls }) => {
   return (

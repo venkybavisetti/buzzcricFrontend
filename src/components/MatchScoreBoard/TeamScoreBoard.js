@@ -117,7 +117,6 @@ const PlayersPerformance = ({ batted, bowled, notBatted, inPlay }) => {
 };
 
 const TeamScoreBoard = ({ team, inPlay }) => {
-  console.log(inPlay);
   return (
     <div className="teamScoreBoard">
       <TeamScoreHeader {...team} />

@@ -5,7 +5,7 @@ import { buzzcricApi } from '../../api/buzzcricApi';
 import { useHistory } from 'react-router-dom';
 import Popup from './Popup';
 import SetupContext from '../../context/SetupContext';
-import { useGetUser } from '../getUser';
+import { useGetUser } from '../utilities';
 
 import './Team.css';
 
@@ -46,9 +46,11 @@ const MatchStepUp = (props) => {
         visitorTeam: getTeams(visitorTeam),
         hostingTeam: getTeams(hostingTeam),
       },
-    }).then((id) => {
-      history.push(`/updateScoreCard/${id}`);
-    });
+    })
+      .then((id) => {
+        history.push(`/updateScoreCard/${id}`);
+      })
+      .catch((err) => history.push('/'));
   };
 
   return (

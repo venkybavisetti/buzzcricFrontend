@@ -1,6 +1,8 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import Logo from '../images/logo.png';
+import { buzzcricApi } from '../api/buzzcricApi';
+import UserContext from '../context/UserContext';
 
 const LoginBtn = () => {
   return (
@@ -10,11 +12,21 @@ const LoginBtn = () => {
   );
 };
 
-const Buttons = ({ onHome, imgUrl }) => {
-  if (!imgUrl) return <LoginBtn />;
+const Buttons = ({ onHome }) => {
+  const { user, setUser } = useContext(UserContext);
+  const history = useHistory();
+  const logout = () => {
+    buzzcricApi({ type: 'logout' })
+      .then(() => {
+        setUser({});
+      })
+      .catch((err) => history.push('/'));
+  };
+
+  if (!user.name) return <LoginBtn />;
   return (
     <div className="menuBtnS">
-      <img src={imgUrl} alt="img" className="imgUrl" />
+      <img src={user.img} alt="img" className="imgUrl" onClick={logout} />
       {onHome && (
         <Link className="hostBtn" to="/setupMatch">
           Host Match

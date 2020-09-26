@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Redirect, useParams } from 'react-router-dom';
+import { Redirect, useHistory, useParams } from 'react-router-dom';
 import Menubar from '../Menubar';
 import { buzzcricApi } from '../../api/buzzcricApi';
 import UpdateScoreContext from '../../context/UpdateScoreContext';
@@ -7,7 +7,7 @@ import ScoreBoard from './ScoreBoard';
 import InPlayPlayers from './InPlayPlayers';
 import ThisOver from './ThisOver';
 import UpdatingBox from './UpdatingBox';
-import { useGetUser } from '../getUser';
+import { useGetUser } from '../utilities';
 
 const Header = () => {
   const { hostingTeam, visitorTeam } = useContext(
@@ -24,17 +24,24 @@ const UpdateScore = (props) => {
   const { id } = useParams();
   const [scoreCard, setScoreCard] = useState(null);
   const user = useGetUser();
+  const history = useHistory();
 
   const updateInPP = (inPlay) => {
-    buzzcricApi({ type: 'updateInPP', id, data: inPlay }).then(setScoreCard);
+    buzzcricApi({ type: 'updateInPP', id, data: inPlay })
+      .then(setScoreCard)
+      .catch((err) => history.push('/'));
   };
 
   const updateScores = (ball) => {
-    buzzcricApi({ type: 'updateScore', id, data: { ball } }).then(setScoreCard);
+    buzzcricApi({ type: 'updateScore', id, data: { ball } })
+      .then(setScoreCard)
+      .catch((err) => history.push('/'));
   };
 
   useEffect(() => {
-    buzzcricApi({ type: 'getInPlay', id }).then(setScoreCard);
+    buzzcricApi({ type: 'getInPlay', id })
+      .then(setScoreCard)
+      .catch((err) => history.push('/'));
   }, [id]);
 
   if (scoreCard === null) return <p>Loading...</p>;
