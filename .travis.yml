@@ -12,8 +12,8 @@ jobs:
   include:
     - stage: Deploy
       script:
-        - ls -al
-        - ./scripts/build.sh
+        - ls  scripts
+        - sh scripts/build.sh
       deploy:
         provider: heroku
         api_key:
