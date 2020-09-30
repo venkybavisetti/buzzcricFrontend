@@ -12,8 +12,7 @@ const LoginBtn = () => {
   );
 };
 
-const Buttons = ({ onHome }) => {
-  const { user, setUser } = useContext(UserContext);
+const Buttons = ({ onHome, user, setUser }) => {
   const history = useHistory();
   const logout = () => {
     buzzcricApi({ type: 'logout' })
@@ -36,14 +35,16 @@ const Buttons = ({ onHome }) => {
   );
 };
 
-const Menubar = ({ onHome, imgUrl }) => {
+const Menubar = ({ onHome }) => {
+  const { user, setUser } = useContext(UserContext);
+
   return (
     <div>
       <div className="menubar">
         <Link to="/">
           <img src={Logo} alt="Went wrong..." className="logo" />
         </Link>
-        <Buttons {...{ onHome, imgUrl }} />
+        <Buttons {...{ onHome, user, setUser }} />
       </div>
 
       <div className="separationBwtMenuBody"></div>

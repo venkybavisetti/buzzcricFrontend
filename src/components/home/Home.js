@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Menubar from '../Menubar';
 import { Link } from 'react-router-dom';
-import { buzzcricApi } from '../../api/buzzcricApi';
 import { MatchStatusMsg, MatchStatus } from '../MatchScoreBoard/MatchStatus';
-import { useGetUser } from '../utilities';
+import { useTimer } from '../utilities';
+import UserContext from '../../context/UserContext';
+import { buzzcricApi } from '../../api/buzzcricApi';
 
 const TeamScoreCard = ({ name, score, wickets, balls }) => {
   return (
@@ -38,29 +39,19 @@ const Matches = ({ matches }) => {
   return <div className="homePage">{children}</div>;
 };
 
-const useTimer = (timeToFetch = 10) => {
-  const [matches, setMatches] = useState(null);
-  useEffect(() => {
-    buzzcricApi({ type: 'getMatches' }).then(setMatches);
-    const interval = setInterval(
-      () => buzzcricApi({ type: 'getMatches' }).then(setMatches),
-      1000 * timeToFetch
-    );
-    return () => {
-      clearInterval(interval);
-    };
-  }, [timeToFetch]);
-
-  return [matches];
-};
-
 const Home = (props) => {
-  const [matches] = useTimer(5);
-  const user = useGetUser();
+  const matches = useTimer({ type: 'getMatches' }, 5);
+  const { setUser } = useContext(UserContext);
+
+  useEffect(() => {
+    buzzcricApi({ type: 'getUser' }).then((user) => {
+      setUser(user);
+    });
+  }, [setUser]);
 
   return (
     <div>
-      <Menubar onHome={true} imgUrl={user.img} />
+      <Menubar onHome={true} />
       <Matches matches={matches} />
     </div>
   );

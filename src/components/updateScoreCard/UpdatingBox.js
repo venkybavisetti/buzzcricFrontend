@@ -111,7 +111,7 @@ const SelectingNextPlayers = () => {
     buzzcricApi({ type: 'choosePlayers', id })
       .then(setPlayers)
       .catch((err) => history.push('/'));
-  }, [id]);
+  }, [id, history]);
 
   if (players === null) return <p>Loading...</p>;
 

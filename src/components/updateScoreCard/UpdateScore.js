@@ -7,7 +7,6 @@ import ScoreBoard from './ScoreBoard';
 import InPlayPlayers from './InPlayPlayers';
 import ThisOver from './ThisOver';
 import UpdatingBox from './UpdatingBox';
-import { useGetUser } from '../utilities';
 
 const Header = () => {
   const { hostingTeam, visitorTeam } = useContext(
@@ -23,7 +22,6 @@ const Header = () => {
 const UpdateScore = (props) => {
   const { id } = useParams();
   const [scoreCard, setScoreCard] = useState(null);
-  const user = useGetUser();
   const history = useHistory();
 
   const updateInPP = (inPlay) => {
@@ -42,14 +40,14 @@ const UpdateScore = (props) => {
     buzzcricApi({ type: 'getInPlay', id })
       .then(setScoreCard)
       .catch((err) => history.push('/'));
-  }, [id]);
+  }, [id, history]);
 
   if (scoreCard === null) return <p>Loading...</p>;
   if (scoreCard.winner) return <Redirect to={`/scoreBoard/${id}`} />;
 
   return (
     <div className="updatedScoreBoard">
-      <Menubar imgUrl={user.img} />
+      <Menubar />
       <UpdateScoreContext.Provider
         value={{ scoreCard, id, updateInPP, updateScores }}
       >
