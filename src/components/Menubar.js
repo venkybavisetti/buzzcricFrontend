@@ -6,7 +6,7 @@ import UserContext from '../context/UserContext';
 
 const LoginBtn = () => {
   return (
-    <a href={process.env.LOGIN_REDIRECT} className="login">
+    <a href={process.env.REACT_APP_LOGIN_REDIRECT} className="login">
       Login
     </a>
   );
