@@ -1,0 +1,22 @@
+language: node_js
+node_js: lts/*
+os:
+  - linux
+env:
+  - NODE_ENV=test
+install:
+  - rm -rf public src package.json package-lock.json
+services:
+  - redis-server
+jobs:
+  include:
+    - stage: Deploy
+      script:
+        - './scripts/build.sh'
+      deploy:
+        provider: heroku
+        api_key:
+          secure: Lui1EOkmHMLi69aT1eA89NmtGLAtOh4MMUo0EcbLwCH7qUqaHk3i6BveklU2GI447/R2yLicN87EIwnCD5UfRIS6QUcqYEyTKv0uzlW/5h6+nRv10aPclnnS709N7hGLzha1tRjASmG14K17+BV6x2LKtl0v1xnlgTs6FxpZBlg6j/+yFRIyCeUCeqL4FhbbkqnFi69XCOY4cwd0btpv6qDEp74xTurPVPSTh2ZAPaCoPiuF6s6i/tnX1c3PrrwuU4oKeImCsNwC0g4G+d7+slPC8c2T1LXTJ1yyBMlW7ZZgwxS1uccMgXrOgS0Wl82V3MW3N43Gsa53A/3PZQM/lVMZi3nuynu/BXUC25C0qa9gErXoAjEr01KXFHwATLpFXCW8jJZ9SzrWe9KSCetO9pXh6ILVKVxB+w7MjGWIcqSLoqUmPp/zipSPTqI+cego3XUlT9hMEu+j4FlZRmfWrDWELTZX8/3ax7rje42dXfZmNEjuHCeuWxgydN2xjEeQq45DcbfKgdgHO7r8TMk5Alal1sLRmf4nqbHHCuVovGXXlQ/25/Y10KU2qourEhx9gajTJIznX60r40Oip5FB+X+lTbTml1cF2ZCmsMhPmhTyg5q7eBXDlnSDxcKzTdu+ocYvLfxTzNy3+IT80NJWegicwhChAYTvjXoR8KPrTkw=
+        skip_cleanup: true
+        app: buzzcric
+        run: restart

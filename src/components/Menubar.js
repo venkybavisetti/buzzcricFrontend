@@ -6,7 +6,7 @@ import UserContext from '../context/UserContext';
 
 const LoginBtn = () => {
   return (
-    <a href="http://localhost:8000/api/authenticate" className="login">
+    <a href={process.env.LOGIN_REDIRECT} className="login">
       Login
     </a>
   );
