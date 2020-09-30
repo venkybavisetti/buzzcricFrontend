@@ -1,4 +1,5 @@
 #cloning frontend
+echo 'starting'
 git clone https://github.com/venkybavisetti/buzzcricFrontend.git frontend 1> /dev/null 2> /dev/null;
 
 #creating react build
