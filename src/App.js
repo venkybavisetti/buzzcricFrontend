@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter as HashRouter } from 'react-router-dom';
 import './buzzcric.css';
 import Routes from './routes/Routes';
 import UserContext from './context/UserContext';
@@ -10,9 +10,9 @@ const App = () => {
   return (
     <div className="body">
       <UserContext.Provider value={{ user, setUser }}>
-        <BrowserRouter>
+        <HashRouter>
           <Routes />
-        </BrowserRouter>
+        </HashRouter>
       </UserContext.Provider>
     </div>
   );
