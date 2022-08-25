@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as HashRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import './buzzcric.css';
 import Routes from './routes/Routes';
 import UserContext from './context/UserContext';
